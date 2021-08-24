@@ -38,7 +38,6 @@ publishing {
 }
 
 dependencies {
-    implementation 'com.github.FabianFG:Fortnite-Api:master-SNAPSHOT'
     implementation 'com.github.FabianFG:JFortniteParse:master-SNAPSHOT'
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'com.squareup.okhttp3:okhttp:4.9.1'

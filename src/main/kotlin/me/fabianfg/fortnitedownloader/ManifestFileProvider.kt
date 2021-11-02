@@ -29,7 +29,7 @@ import java.util.concurrent.CopyOnWriteArrayList
  * @param concurrent If true this file provider will be thread-safe by creating a copy of each FPakArchive before each operation. Use true if you plan to use any multithreading
  */
 @Suppress("EXPERIMENTAL_API_USAGE")
-class ManifestFileProvider(val mountedBuild: MountedBuild, mappingsProvider: TypeMappingsProvider = ReflectionTypeMappingsProvider(), paksFilter: (fileName: String) -> Boolean = { true }, val localFilesFolder: File? = null, override var versions: VersionContainer = VersionContainer.DEFAULT, concurrent: Boolean): PakFileProvider() {
+open class ManifestFileProvider(val mountedBuild: MountedBuild, mappingsProvider: TypeMappingsProvider = ReflectionTypeMappingsProvider(), paksFilter: (fileName: String) -> Boolean = { true }, val localFilesFolder: File? = null, override var versions: VersionContainer = VersionContainer.DEFAULT, concurrent: Boolean): PakFileProvider() {
     override val files = ConcurrentHashMap<String, GameFile>()
     override val keys = ConcurrentHashMap<FGuid, ByteArray>()
     override val mountedIoStoreReaders = CopyOnWriteArrayList<FIoStoreReaderImpl>()

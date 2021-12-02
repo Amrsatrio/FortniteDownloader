@@ -112,7 +112,7 @@ open class ManifestFileProvider(val mountedBuild: MountedBuild, mappingsProvider
                     ioStoreReader.files.associateByTo(files) { it.path.toLowerCase() }
                     mountedIoStoreReaders.add(ioStoreReader)
                     if (globalPackageStore.isInitialized()) {
-                        globalPackageStore.value.onContainerMounted(ioStoreReader.containerId)
+                        globalPackageStore.value.onContainerMounted(ioStoreReader)
                     }
                 } catch (e: FIoStatusException) {
                     PakFileReader.logger.warn("Failed to mount IoStore environment \"{}\" [{}]", utocName, e.message)

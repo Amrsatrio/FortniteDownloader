@@ -35,10 +35,12 @@ enum class EFeatureLevel
     VariableSizeChunksWithoutWindowSizeChunkInfo,
     // Manifest can reference chunks with dynamic window size, and also serializes them.
     VariableSizeChunks,
-    // Manifest stores a unique build id for exact matching of build data.
-    StoresUniqueBuildId;
+    // Manifest uses a build id generated from its metadata.
+    UsesRuntimeGeneratedBuildId,
+    // Manifest uses a build id generated unique at build time, and stored in manifest.
+    UsesBuildTimeGeneratedBuildId;
 
     companion object {
-        fun safeValue(ordinal: Int) = runCatching { values()[ordinal] }.getOrDefault(StoresChunkFileSizes)
+        fun safeValue(ordinal: Int) = values().getOrElse(ordinal) { values().last() }
     }
 }
